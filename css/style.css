@@ -1,0 +1,52 @@
+*{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    letter-spacing: 1px;
+    scroll-behavior: smooth;
+}
+
+header {
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    height: 75px;
+
+}
+
+
+header nav {
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+header nav h1 {
+    color: wheat;
+    font-size: 35px;
+    padding: 15px 0px 15px 50px;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+header nav h1 span{
+    color: yellow;
+}
+
+header nav ul{
+    padding: 23px 50px 20px 0;
+}
+header nav ul li {
+    padding-right: 20px;
+    font-weight: 500;
+    display: inline-block;
+    font-size: 25px;
+}
+
+a {
+    color: wheat;
+    text-decoration: none;
+}
+
+a:hover{
+    color: yellow
+}
