@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
 <body>
     <header>
         <nav>
-            <h1>PEOPLE <span>OPERATIONS</span></h1>
+            <h1>PEOPLE <span class="dec">OPERATIONS</span></h1>
             <ul>
                 <li><a href="./index.html">HOME</a></li>
                 <li><a href="#">PROFILE</a></li>
@@ -30,9 +31,39 @@
         </nav>
     </header>
     <main>
-        <div id="employees-data">
-            <script src="./app.js"></script>
-        </div>
+        <section class="top">
+            <form id="employeesForm">
+                <fieldset>
+                    <legend class="formTitle">Add an <span class="dec">Employee</span></legend>
+                    <label for="fullName" class="label">Full Name:</label>
+                    <input type="text" name="fullName" id="name" placeholder="Enter Full Name...">
+
+
+                    <label for="department" class="label">Department:</label>
+                    <select name="department" id="department">
+                        <option value="">Select Department...</option>
+                        <option value="administration">Administration</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="development">Development</option>
+                        <option value="finance">Finance</option>
+                    </select>
+
+                    <label for="level" class="label">Level:</label>
+                    <select name="level" id="level">
+                        <option value="">Select Level...</option>
+                        <option value="junior">Junior</option>
+                        <option value="midSenior">Mid-Senior</option>
+                        <option value="senior">Senior</option>
+                    </select>
+
+                    <label for="imgUrl" class="label">Image URL:</label>
+                    <input type="text" name="imgUrl" id="imgUrl" placeholder="Image Path...">
+
+                    <input type="submit" value="SUBMIT">
+                </fieldset>
+            </form>
+        </section>
+        <section id="employees-data"></section>
     </main>
     <footer>
         <p class="footer-title">ALL RIGHTS RESAVED 2023<i class="fa fa-copyright"></i></p>
@@ -43,6 +74,7 @@
             <a href="#" class="fa fa-linkedin"></a>
         </div>
     </footer>
+    <script src="./app.js"></script>
 </body>
 
 </html>
