@@ -1,5 +1,5 @@
 'use strict';
-function Employee( fullName, department, level, imageURL) {
+function Employee(fullName, department, level, imageURL) {
   this.employeeId = 0;
   this.fullName = fullName;
   this.department = department;
@@ -8,25 +8,20 @@ function Employee( fullName, department, level, imageURL) {
   this.salary = 0;
 };
 
+
+
 Employee.prototype.calculateSalary = function () {
-  let min, max;
-  switch (this.level) {
-    case "Junior":
-      min = 500;
-      max = 1000;
-      break;
-    case "Mid-Senior":
-      min = 1000;
-      max = 1500;
-      break;
-    case "Senior":
-      min = 1500;
-      max = 2000;
-      break;
+
+  if (this.level == "junior") {
+    let salary = Math.ceil(Math.random() * 500) + 500;
+    this.salary = salary - (salary * 0.075);
+  } else if (this.level == "midSenior") {
+    let salary = Math.ceil(Math.random() * 500) + 1000;
+    this.salary = salary - (salary * 0.075);
+  } else if (this.level == "senior") {
+    let salary = Math.ceil(Math.random() * 500) + 1500;
+    this.salary = salary - (salary * 0.075);
   }
-  let difference = max - min;
-  let salary = Math.ceil(Math.random() * difference) + min;
-  this.salary = salary - (salary * 0.075);
 };
 
 Employee.prototype.generateId = function () {
@@ -45,11 +40,14 @@ Employee.prototype.render = function () {
   console.log(container);
 
   const divEl = document.createElement('div');
+  divEl.classList.add("cards");
   container.appendChild(divEl);
 
   const imgEl = document.createElement('img');
-    divEl.appendChild(imgEl);
-    imgEl.setAttribute('src',this.imageURL);
+  divEl.appendChild(imgEl);
+  imgEl.setAttribute('src', this.imageURL);
+  imgEl.width = "300";
+  imgEl.height = "250";
 
   const fullNameEl = document.createElement('p');
   divEl.appendChild(fullNameEl);
@@ -79,7 +77,7 @@ function addNewEmployee(event) {
   let department = event.target.department.value;
   let level = event.target.level.value;
   let imgUrl = event.target.imgUrl.value;
-  let newEmployee = new Employee(fullName,department,level,imgUrl)
+  let newEmployee = new Employee(fullName, department, level, imgUrl)
   newEmployee.calculateSalary();
   newEmployee.generateId();
   newEmployee.render();

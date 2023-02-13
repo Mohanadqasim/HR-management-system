@@ -5,7 +5,7 @@
 }
 
 header {
-    background-color: black;
+    background-image: url(https://www.cottodeste.us/media/immagini/185_n_COTTODESTE-BLACK-WHITE-black-minimale.jpg);
     position: fixed;
     width: 100%;
     z-index: 999;
@@ -115,10 +115,29 @@ input[type=submit]:hover {
 
 }
 
-/* #employees-data {
-    padding: 100px;
-    font-size: 40px;
-} */
+#employees-data {
+    background-image: url(https://t4.ftcdn.net/jpg/04/32/35/97/360_F_432359734_h6VuEWAOEgLc4oKpVHPE1fw3wIL1fc9D.jpg);
+    padding: 100px 0;
+    
+    background-color: wheat;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+
+}
+
+.cards {
+    background-color: #262b31;
+    height: 400px;
+    width: 300px;
+    box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 15px;
+    transition: 0.7s ease;
+}
 
 footer {
     font-family: 'Big Shoulders Stencil Display', cursive;
