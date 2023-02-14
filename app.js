@@ -1,4 +1,5 @@
 'use strict';
+let allEmployees = [];
 function Employee(fullName, department, level, imageURL) {
   this.employeeId = 0;
   this.fullName = fullName;
@@ -71,8 +72,11 @@ Employee.prototype.render = function () {
 
 };
 
+
+
 function addNewEmployee(event) {
   event.preventDefault();
+  
   let fullName = event.target.fullName.value;
   let department = event.target.department.value;
   let level = event.target.level.value;
@@ -80,6 +84,7 @@ function addNewEmployee(event) {
   let newEmployee = new Employee(fullName, department, level, imgUrl)
   newEmployee.calculateSalary();
   newEmployee.generateId();
+  allEmployees.push(newEmployee);
   newEmployee.render();
 };
 

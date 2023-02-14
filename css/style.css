@@ -118,7 +118,7 @@ input[type=submit]:hover {
 #employees-data {
     background-image: url(https://t4.ftcdn.net/jpg/04/32/35/97/360_F_432359734_h6VuEWAOEgLc4oKpVHPE1fw3wIL1fc9D.jpg);
     padding: 100px 0;
-    
+    color: wheat;
     background-color: wheat;
     display: flex;
     width: 100%;

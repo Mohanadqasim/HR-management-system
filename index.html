@@ -36,12 +36,12 @@
                 <fieldset>
                     <legend class="formTitle">Add an <span class="dec">Employee</span></legend>
                     <label for="fullName" class="label">Full Name:</label>
-                    <input type="text" name="fullName" id="name" placeholder="Enter Full Name...">
+                    <input required type="text" name="fullName" id="name" placeholder="Enter Full Name...">
 
 
                     <label for="department" class="label">Department:</label>
-                    <select name="department" id="department">
-                        <option value="">Select Department...</option>
+                    <select required name="department" id="department">
+                        
                         <option value="administration">Administration</option>
                         <option value="marketing">Marketing</option>
                         <option value="development">Development</option>
@@ -49,15 +49,15 @@
                     </select>
 
                     <label for="level" class="label">Level:</label>
-                    <select name="level" id="level">
-                        <option value="">Select Level...</option>
+                    <select required name="level" id="level">
+                        
                         <option value="junior">Junior</option>
                         <option value="midSenior">Mid-Senior</option>
                         <option value="senior">Senior</option>
                     </select>
 
                     <label for="imgUrl" class="label">Image URL:</label>
-                    <input type="text" name="imgUrl" id="imgUrl" placeholder="Image Path...">
+                    <input required type="text" name="imgUrl" id="imgUrl" placeholder="Image Path...">
 
                     <input type="submit" value="SUBMIT">
                 </fieldset>
