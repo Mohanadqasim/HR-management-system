@@ -1,5 +1,5 @@
 'use strict';
-let allEmployees = [];
+let employeesArr=[];
 function Employee(fullName, department, level, imageURL) {
   this.employeeId = 0;
   this.fullName = fullName;
@@ -7,9 +7,8 @@ function Employee(fullName, department, level, imageURL) {
   this.level = level;
   this.imageURL = imageURL;
   this.salary = 0;
+  employeesArr.push(this);
 };
-
-
 
 Employee.prototype.calculateSalary = function () {
 
@@ -33,12 +32,10 @@ Employee.prototype.generateId = function () {
 // 2. append it to it's parent
 // 3. add text content to it || attribuates
 
-
-
 Employee.prototype.render = function () {
   // const test = document.getElementsByClassName('prag');
   const container = document.getElementById("employees-data");
-  console.log(container);
+  // console.log(container);
 
   const divEl = document.createElement('div');
   divEl.classList.add("cards");
@@ -72,46 +69,34 @@ Employee.prototype.render = function () {
 
 };
 
+let employeesTable = document.getElementById("employeesForm");
+employeesTable.addEventListener('submit', addNewEmployeeHandler);
 
-
-function addNewEmployee(event) {
-  event.preventDefault();
-  
-  let fullName = event.target.fullName.value;
-  let department = event.target.department.value;
-  let level = event.target.level.value;
-  let imgUrl = event.target.imgUrl.value;
-  let newEmployee = new Employee(fullName, department, level, imgUrl)
-  newEmployee.calculateSalary();
-  newEmployee.generateId();
-  allEmployees.push(newEmployee);
-  newEmployee.render();
+function addNewEmployeeHandler(event) {
+    event.preventDefault();
+    let fullName = event.target.fullName.value;
+    let department = event.target.department.value;
+    let level = event.target.level.value;
+    let imgUrl = event.target.imgUrl.value;
+    let newEmployee = new Employee(fullName, department, level, imgUrl)
+    newEmployee.calculateSalary();
+    newEmployee.generateId();
+    newEmployee.render();
+    employeesArr.push(newEmployee);
+    let jsonObj = JSON.stringify(employeesArr);  //convert from JS to JSON
+    localStorage.setItem("allEmployees",jsonObj);  //store in local storage
 };
 
-const employeesForm = document.getElementById("employeesForm");
-employeesForm.addEventListener('submit', addNewEmployee);
+// function getEmployees () {
+//   let employees = localStorage.getItem("allEmployees");
+//   let jsObj = JSON.parse(employees);
+// }
 
-// for (let i = 0; i < employees.length; i++) {
-//   employees[i].calculateSalary();
-//   employees[i].generateId();
-//   employees[i].render();
-// };
+// // store data (key,value)
+// localStorage.setItem('userName', 'roaa');
+// localStorage.setItem('age', '27');
+// localStorage.setItem('gender', 'female');
 
-// const Employee1 = new Employee (1000,"Ghazi Samer","Administration","Senior","Image URL");
-// const Employee2 = new Employee (1001,"Lana Ali","Finance","Senior","Image URL");
-// const Employee3 = new Employee (1002,"Tamara Ayoub","Marketing","Senior","Image URL");
-// const Employee4 = new Employee (1003,"Safi Walid","	Administration","Mid-Senior","Image URL");
-// const Employee5 = new Employee (1004,"Omar Zaid","Development","Senior","Image URL");
-// const Employee6 = new Employee (1005,"Rana Saleh","Development","Junior","Image URL");
-// const Employee7 = new Employee (1006,"Hadi Ahmad","Finance","Mid-Senior","Image URL");
-
-// const employees = [
-//   Employee1,
-//   Employee2,
-//   Employee3, 
-//   Employee4, 
-//   Employee5,
-//   Employee6, 
-//   Employee7
-// ];
-
+// //get data
+// let userName = localStorage.getItem('userName'); // return value of 'userName' key
+// console.log(userName);
