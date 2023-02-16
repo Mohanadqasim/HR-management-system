@@ -82,9 +82,9 @@ function addNewEmployeeHandler(event) {
     newEmployee.calculateSalary();
     newEmployee.generateId();
     newEmployee.render();
-    employeesArr.push(newEmployee);
     let jsonObj = JSON.stringify(employeesArr);  //convert from JS to JSON
     localStorage.setItem("allEmployees",jsonObj);  //store in local storage
+    console.log(jsonObj);
 };
 
 // function getEmployees () {
