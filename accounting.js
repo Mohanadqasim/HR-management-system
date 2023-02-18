@@ -10,7 +10,7 @@ getEmployees();
 
 function administrationFn() {
     let numberOfEmployees = 0;
-    let averageSalary;
+    let averageSalary=0;
     let totalSalary = 0;
     for (let i = 0; i < forAccounting.length; i++) {
         if (forAccounting[i].department == "administration") {
@@ -24,7 +24,7 @@ function administrationFn() {
 
 function marketingFn() {
     let numberOfEmployees = 0;
-    let averageSalary;
+    let averageSalary=0;
     let totalSalary = 0;
     for (let i = 0; i < forAccounting.length; i++) {
         if (forAccounting[i].department == "marketing") {
@@ -38,7 +38,7 @@ function marketingFn() {
 
 function developmentFn() {
     let numberOfEmployees = 0;
-    let averageSalary;
+    let averageSalary=0;
     let totalSalary = 0;
     for (let i = 0; i < forAccounting.length; i++) {
         if (forAccounting[i].department == "development") {
@@ -52,7 +52,7 @@ function developmentFn() {
 
 function financeFn() {
     let numberOfEmployees = 0;
-    let averageSalary;
+    let averageSalary=0;
     let totalSalary = 0;
     for (let i = 0; i < forAccounting.length; i++) {
         if (forAccounting[i].department == "finance") {
