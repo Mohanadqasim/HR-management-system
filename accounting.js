@@ -10,7 +10,7 @@ getEmployees();
 
 function administrationFn() {
     let numberOfEmployees = 0;
-    let averageSalary=0;
+    let averageSalary;
     let totalSalary = 0;
     for (let i = 0; i < forAccounting.length; i++) {
         if (forAccounting[i].department == "administration") {
@@ -18,13 +18,17 @@ function administrationFn() {
             totalSalary = totalSalary + forAccounting[i].salary;
         }
     }
-    averageSalary = totalSalary / numberOfEmployees;
+    if (numberOfEmployees==0) {
+        averageSalary=0;
+    } else {
+         averageSalary = totalSalary / numberOfEmployees;
+        }
     return { totalSalary, averageSalary, numberOfEmployees };
 };
 
 function marketingFn() {
     let numberOfEmployees = 0;
-    let averageSalary=0;
+    let averageSalary;
     let totalSalary = 0;
     for (let i = 0; i < forAccounting.length; i++) {
         if (forAccounting[i].department == "marketing") {
@@ -32,7 +36,11 @@ function marketingFn() {
             totalSalary = totalSalary + forAccounting[i].salary;
         }
     }
-    averageSalary = totalSalary / numberOfEmployees;
+    if (numberOfEmployees==0) {
+        averageSalary=0;
+    } else {
+         averageSalary = totalSalary / numberOfEmployees;
+        }
     return { totalSalary, averageSalary, numberOfEmployees };
 };
 
@@ -46,13 +54,17 @@ function developmentFn() {
             totalSalary = totalSalary + forAccounting[i].salary;
         }
     }
-    averageSalary = totalSalary / numberOfEmployees;
+    if (numberOfEmployees==0) {
+        averageSalary=0;
+    } else {
+         averageSalary = totalSalary / numberOfEmployees;
+        }
     return { totalSalary, averageSalary, numberOfEmployees };
 };
 
 function financeFn() {
+    let averageSalary;
     let numberOfEmployees = 0;
-    let averageSalary=0;
     let totalSalary = 0;
     for (let i = 0; i < forAccounting.length; i++) {
         if (forAccounting[i].department == "finance") {
@@ -60,7 +72,11 @@ function financeFn() {
             totalSalary = totalSalary + forAccounting[i].salary;
         }
     }
-    averageSalary = totalSalary / numberOfEmployees;
+    if (numberOfEmployees==0) {
+        averageSalary=0;
+    } else {
+         averageSalary = totalSalary / numberOfEmployees;
+        }
     return { totalSalary, averageSalary, numberOfEmployees };
 };
 

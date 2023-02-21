@@ -1,5 +1,15 @@
 'use strict';
 let employeesArr=[];
+
+// Load employees array from localStorage when the page is loaded
+window.addEventListener('load', () => {
+  const emps = localStorage.getItem('allEmployees');
+  if (emps) {
+    employeesArr = JSON.parse(emps);
+    render(employeesArr);
+  }
+});
+
 function Employee(fullName, department, level, imageURL) {
   this.employeeId = 0;
   this.fullName = fullName;
@@ -7,7 +17,6 @@ function Employee(fullName, department, level, imageURL) {
   this.level = level;
   this.imageURL = imageURL;
   this.salary = 0;
-  employeesArr.push(this);
 };
 
 Employee.prototype.calculateSalary = function () {
@@ -32,60 +41,63 @@ Employee.prototype.generateId = function () {
 // 2. append it to it's parent
 // 3. add text content to it || attribuates
 
-Employee.prototype.render = function () {
-  // const test = document.getElementsByClassName('prag');
-  const container = document.getElementById("employees-data");
-  // console.log(container);
-
-  const divEl = document.createElement('div');
-  divEl.classList.add("cards");
-  container.appendChild(divEl);
-
-  const imgEl = document.createElement('img');
-  divEl.appendChild(imgEl);
-  imgEl.setAttribute('src', this.imageURL);
-  imgEl.width = "300";
-  imgEl.height = "250";
-
-  const fullNameEl = document.createElement('p');
-  divEl.appendChild(fullNameEl);
-  fullNameEl.textContent = `Full Name: ${this.fullName}`;
-
-  const employeeIdEl = document.createElement('p');
-  divEl.appendChild(employeeIdEl);
-  employeeIdEl.textContent = `ID no :${this.employeeId}`;
-
-  const departmentEl = document.createElement('p');
-  divEl.appendChild(departmentEl);
-  departmentEl.textContent = `Department: ${this.department}`;
-
-  const levelEl = document.createElement('p');
-  divEl.appendChild(levelEl);
-  levelEl.textContent = `Level: ${this.level}`;
-
-  const salaryEl = document.createElement('p');
-  divEl.appendChild(salaryEl);
-  salaryEl.textContent = `Salary: ${this.salary}`
-
-};
-
 let employeesTable = document.getElementById("employeesForm");
 employeesTable.addEventListener('submit', addNewEmployeeHandler);
 
 function addNewEmployeeHandler(event) {
-    event.preventDefault();
-    let fullName = event.target.fullName.value;
-    let department = event.target.department.value;
-    let level = event.target.level.value;
-    let imgUrl = event.target.imgUrl.value;
-    let newEmployee = new Employee(fullName, department, level, imgUrl)
-    newEmployee.calculateSalary();
-    newEmployee.generateId();
-    newEmployee.render();
-    let jsonObj = JSON.stringify(employeesArr);  //convert from JS to JSON
-    localStorage.setItem("allEmployees",jsonObj);  //store in local storage
-    console.log(jsonObj);
+  event.preventDefault();
+  let fullName = event.target.fullName.value;
+  let department = event.target.department.value;
+  let level = event.target.level.value;
+  let imgUrl = event.target.imgUrl.value;
+  let newEmployee = new Employee(fullName, department, level, imgUrl)
+  newEmployee.calculateSalary();
+  newEmployee.generateId();
+  employeesArr.push(newEmployee);
+  // Save the updated array to localStorage
+  localStorage.setItem('allEmployees', JSON.stringify(employeesArr));
+  render(employeesArr);
 };
+
+function render (arr) {
+  const container = document.getElementById("employees-data");
+  // Clear previous content
+  container.innerHTML = '';
+  for(let i=0;i<arr.length;i++) {
+    const divEl = document.createElement('div');
+    divEl.classList.add("cards");
+    container.appendChild(divEl);
+
+    const imgEl = document.createElement('img');
+    divEl.appendChild(imgEl);
+    imgEl.setAttribute('src', arr[i].imageURL);
+    imgEl.width = "300";
+    imgEl.height = "250";
+
+    const fullNameEl = document.createElement('p');
+    divEl.appendChild(fullNameEl);
+    fullNameEl.textContent = `Full Name: ${arr[i].fullName}`;
+
+    const employeeIdEl = document.createElement('p');
+    divEl.appendChild(employeeIdEl);
+    employeeIdEl.textContent = `ID no :${arr[i].employeeId}`;
+
+    const departmentEl = document.createElement('p');
+    divEl.appendChild(departmentEl);
+    departmentEl.textContent = `Department: ${arr[i].department}`;
+
+    const levelEl = document.createElement('p');
+    divEl.appendChild(levelEl);
+    levelEl.textContent = `Level: ${arr[i].level}`;
+
+    const salaryEl = document.createElement('p');
+    divEl.appendChild(salaryEl);
+    salaryEl.textContent = `Salary: ${arr[i].salary}`
+  }
+
+};
+
+
 
 // function getEmployees () {
 //   let employees = localStorage.getItem("allEmployees");
